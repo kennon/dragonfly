@@ -2,12 +2,12 @@ source :rubygems
 
 # These gems are needed for development and testing
 group :development, :test, :cucumber do
-  gem 'aws-s3'
   gem 'bson_ext'
   gem 'capybara'
   gem 'cucumber', '0.8.5'
   gem 'cucumber-rails'
   gem 'database_cleaner', '>= 0.5.0'
+  gem 'fog'
   gem 'jeweler',  '~> 1.4'
   gem 'gherkin', '2.1.4' # 2.1.5 seems to segfault on Ruby 1.9.2
   gem 'mongo'
