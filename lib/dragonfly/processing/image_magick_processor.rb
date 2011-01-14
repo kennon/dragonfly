@@ -93,6 +93,10 @@ module Dragonfly
       def convert(temp_object, args='', format=nil)
         format ? [super, {:format => format.to_sym}] : super
       end
+
+      def composite(temp_object, args='')
+        super
+      end
       
       def watermark(temp_object, watermark_image_path, opts={})
         opts ||= {}
