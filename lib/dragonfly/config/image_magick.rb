@@ -32,6 +32,12 @@ module Dragonfly
           c.job :convert do |args, format|
             process :convert, args, format
           end
+          c.job :composite do |args, format|
+            process :composite, args, format
+          end
+          c.job :watermark do |watermark_path, opts|
+            process :watermark, watermark_path, opts
+          end
         end
 
       end

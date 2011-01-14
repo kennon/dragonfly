@@ -94,6 +94,11 @@ module Dragonfly
         format ? [super, {:format => format.to_sym}] : super
       end
       
+      def watermark(temp_object, watermark_image_path, opts={})
+        opts ||= {}
+        opts[:dissolve] ||= 15
+        composite(temp_object, "-dissolve #{opts[:dissolve]} -tile #{watermark_image_path}")
+      end
     end
   end
 end

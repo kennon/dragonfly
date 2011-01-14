@@ -10,6 +10,7 @@ module Dragonfly
       include Configurable
       configurable_attr :convert_command, "convert"
       configurable_attr :identify_command, "identify"
+      configurable_attr :composite_command, "composite"
       configurable_attr :log_commands, false
     end
     
@@ -20,6 +21,12 @@ module Dragonfly
     def convert(temp_object, args='', format=nil)
       tempfile = new_tempfile(format)
       run "#{convert_command} #{args} #{temp_object.path} #{tempfile.path}"
+      tempfile
+    end
+    
+    def composite(temp_object, args='', format=nil)
+      tempfile = new_tempfile(format)
+      run "#{composite_command} #{args} #{temp_object.path} #{tempfile.path}"
       tempfile
     end
 
@@ -56,6 +63,10 @@ module Dragonfly
 
     def identify_command
       ImageMagickUtils.identify_command
+    end
+
+    def composite_command
+      ImageMagickUtils.composite_command
     end
 
     def run(command)
